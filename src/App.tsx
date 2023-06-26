@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { CssBaseline, Typography } from '@mui/material';
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import Root from './components/Root';
+import Home from './components/Home';
+import Accounts from './components/Accounts';
+import Transactions from './components/Transactions';
+
+const router = createBrowserRouter(createRoutesFromElements(
+    <Route path="/" element={<Root />}>
+        <Route index element={<Home />} />
+        <Route path="accounts" element={<Accounts />} />
+        <Route path="transactions" element={<Transactions />} />
+    </Route>
+))
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+        <CssBaseline />
+        <RouterProvider router={router} />
+    </>
   );
 }
 
