@@ -38,7 +38,7 @@ export default function AccountList() {
             <Typography color="#003f62" fontWeight="bold" fontSize={30} mb={5}>
                 Accounts
             </Typography>
-            <Box width={800}>
+            <Box minWidth={800}>
                 {
                     accounts.map(account => {
                         return <AccountView key={account.id} account={account} />
