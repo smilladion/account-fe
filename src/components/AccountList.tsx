@@ -1,7 +1,9 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Fab, Typography } from "@mui/material";
 import { Account } from "../types/Account";
 import { useState } from "react";
 import AccountView from "./AccountView";
+import AddIcon from '@mui/icons-material/Add';
+import AccountDialog from "./AccountDialog";
 
 const accountsData: Account[] = [
     {
@@ -29,6 +31,7 @@ const accountsData: Account[] = [
 
 export default function AccountList() {
     const [accounts, setAccounts] = useState<Account[]>(accountsData);
+    const [dialogOpen, setDialogOpen] = useState(false);
 
     return (
         <Box mx={5} my={5} display="flex" flexDirection="column" justifyContent="center" alignItems="center">
@@ -38,10 +41,14 @@ export default function AccountList() {
             <Box width={800}>
                 {
                     accounts.map(account => {
-                        return <AccountView account={account} />
+                        return <AccountView key={account.id} account={account} />
                     })
                 }
             </Box>
+            <Fab color="primary" size="medium" sx={{mt: 5}} onClick={e => setDialogOpen(true)}>
+                <AddIcon />
+            </Fab>
+            <AccountDialog open={dialogOpen} setOpen={setDialogOpen} />
         </Box>
     )
 }
