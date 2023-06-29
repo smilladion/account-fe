@@ -31,7 +31,7 @@ export default function Transactions() {
 
     return (
         <Box mx={5} my={5} display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-            <Typography color="#003f62" fontWeight="bold" fontSize={30} mb={5}>
+            <Typography color="#013655" fontWeight="bold" fontSize={30} mb={5}>
                 Transactions
             </Typography>
             <FormControl sx={{ mb: 5, minWidth: 200 }} size="small">

@@ -4,7 +4,7 @@ import logo from "../assets/danske-bank-logo.png";
 
 export default function Header() {
     return (
-        <AppBar position="static" sx={{ backgroundColor: "#003f62" }}>
+        <AppBar position="static" sx={{ backgroundColor: "#013655" }}>
             <Toolbar>
                 <Link to="https://danskebank.dk/">
                     <img src={logo} alt="logo" width={180} />

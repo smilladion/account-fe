@@ -18,7 +18,7 @@ export default function AccountList() {
 
     return (
         <Box mx={5} my={5} display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-            <Typography color="#003f62" fontWeight="bold" fontSize={30} mb={5}>
+            <Typography color="#013655" fontWeight="bold" fontSize={30} mb={5}>
                 Accounts
             </Typography>
             <Box minWidth={800}>
@@ -28,7 +28,7 @@ export default function AccountList() {
                     })
                 }
             </Box>
-            <Fab color="primary" size="medium" sx={{mt: 5}} onClick={e => setDialogOpen(true)}>
+            <Fab size="medium" sx={{mt: 5, backgroundColor: "#013655", color: "white"}} onClick={e => setDialogOpen(true)}>
                 <AddIcon />
             </Fab>
             <AccountDialog open={dialogOpen} setOpen={setDialogOpen} setAccounts={setAccounts} />
