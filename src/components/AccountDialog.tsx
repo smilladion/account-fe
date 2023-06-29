@@ -1,15 +1,15 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from "@mui/material";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useContext, useState } from "react";
 import AccountService from "../services/AccountService";
-import { Account } from "../types/Account";
+import { AccountContext } from "../App";
 
 interface AccountDialogProps {
     open: boolean,
-    setOpen: Dispatch<SetStateAction<boolean>>,
-    setAccounts: Dispatch<SetStateAction<Account[]>>
+    setOpen: Dispatch<SetStateAction<boolean>>
 }
 
-export default function AccountDialog({open, setOpen, setAccounts}: AccountDialogProps) {
+export default function AccountDialog({open, setOpen}: AccountDialogProps) {
+    const {setAccounts} = useContext(AccountContext);
     const [newAccountName, setNewAccountName] = useState("");
 
     function handleCreate() {

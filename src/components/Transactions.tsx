@@ -1,33 +1,17 @@
 import { Box, Divider, FormControl, List, ListItem, ListItemButton, ListItemText, MenuItem, Select, Typography } from "@mui/material";
-import { Account } from "../types/Account";
-import { useState } from "react";
-
-const accountsData: Account[] = [
-    {
-        id: 435680324432,
-        name: "Savings",
-        username: "John Doe",
-        balance: 50361.21,
-        currency: "DKK"
-    },
-    {
-        id: 100437206777,
-        name: "Bills and expenses",
-        username: "John Doe",
-        balance: 12053.55,
-        currency: "DKK"
-    },
-    {
-        id: 8766084437332,
-        name: "Holiday fund",
-        username: "John Doe",
-        balance: 27600.80,
-        currency: "DKK"
-    }
-]
+import { useContext, useEffect, useState } from "react";
+import { AccountContext } from "../App";
 
 export default function Transactions() {
-    const [selectedAccount, setSelectedAccount] = useState(accountsData[0].name);
+    const {accounts} = useContext(AccountContext);
+
+    const [selectedAccount, setSelectedAccount] = useState("");
+
+    useEffect(() => {
+        if (accounts.length) {
+            setSelectedAccount(accounts[0].name);
+        }
+    }, [accounts]);
 
     return (
         <Box mx={5} my={5} display="flex" flexDirection="column" justifyContent="center" alignItems="center">
@@ -41,7 +25,7 @@ export default function Transactions() {
                     onChange={e => setSelectedAccount(e.target.value)}
                 >
                     {
-                        accountsData.map(account => {
+                        accounts.map(account => {
                             return <MenuItem value={account.name}>{account.name}</MenuItem>
                         })
                     }

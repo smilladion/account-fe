@@ -1,20 +1,13 @@
 import { Box, Fab, Typography } from "@mui/material";
-import { Account } from "../types/Account";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import AccountView from "./AccountView";
 import AddIcon from '@mui/icons-material/Add';
 import AccountDialog from "./AccountDialog";
-import AccountService from "../services/AccountService";
+import { AccountContext } from "../App";
 
 export default function AccountList() {
-    const [accounts, setAccounts] = useState<Account[]>([]);
+    const {accounts} = useContext(AccountContext);
     const [dialogOpen, setDialogOpen] = useState(false);
-
-    useEffect(() => {
-        AccountService.getAllAccounts()
-            .then(accounts => setAccounts(accounts))
-            .catch(error => console.log(error))
-    }, []);
 
     return (
         <Box mx={5} my={5} display="flex" flexDirection="column" justifyContent="center" alignItems="center">
@@ -31,7 +24,7 @@ export default function AccountList() {
             <Fab size="medium" sx={{mt: 5, backgroundColor: "#013655", color: "white"}} onClick={e => setDialogOpen(true)}>
                 <AddIcon />
             </Fab>
-            <AccountDialog open={dialogOpen} setOpen={setDialogOpen} setAccounts={setAccounts} />
+            <AccountDialog open={dialogOpen} setOpen={setDialogOpen} />
         </Box>
     )
 }
