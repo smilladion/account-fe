@@ -19,7 +19,7 @@ export default function AccountView({account}: AccountProps) {
             </AccordionSummary>
             <AccordionDetails>
                 <Typography>Account Id: {account.id}</Typography>
-                <Typography>Account Owner: {account.user}</Typography>
+                <Typography>Account Owner: {account.username}</Typography>
                 <Typography>Currency: {account.currency}</Typography>
             </AccordionDetails>
         </Accordion>

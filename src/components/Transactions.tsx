@@ -1,4 +1,4 @@
-import { Box, Divider, FormControl, InputLabel, List, ListItem, ListItemButton, ListItemText, MenuItem, Select, Typography } from "@mui/material";
+import { Box, Divider, FormControl, List, ListItem, ListItemButton, ListItemText, MenuItem, Select, Typography } from "@mui/material";
 import { Account } from "../types/Account";
 import { useState } from "react";
 
@@ -6,21 +6,21 @@ const accountsData: Account[] = [
     {
         id: 435680324432,
         name: "Savings",
-        user: "John Doe",
+        username: "John Doe",
         balance: 50361.21,
         currency: "DKK"
     },
     {
         id: 100437206777,
         name: "Bills and expenses",
-        user: "John Doe",
+        username: "John Doe",
         balance: 12053.55,
         currency: "DKK"
     },
     {
         id: 8766084437332,
         name: "Holiday fund",
-        user: "John Doe",
+        username: "John Doe",
         balance: 27600.80,
         currency: "DKK"
     }
