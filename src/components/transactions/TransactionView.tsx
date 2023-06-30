@@ -1,5 +1,5 @@
 import { ListItem, ListItemText, Typography } from "@mui/material"
-import { Transaction } from "../types/Transaction"
+import { Transaction } from "../../types/Transaction"
 import dayjs from "dayjs";
 
 interface TransactionViewProps {

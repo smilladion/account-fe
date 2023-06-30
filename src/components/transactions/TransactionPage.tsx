@@ -1,22 +1,18 @@
-import { Box, Divider, FormControl, List, MenuItem, Select, Typography } from "@mui/material";
+import { Box, FormControl, MenuItem, Select, Typography } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
-import { AccountContext } from "../App";
-import TransactionService from "../services/TransactionService";
-import { Transaction } from "../types/Transaction";
-import TransactionView from "./TransactionView";
+import { AccountContext } from "../../App";
+import TransactionService from "../../services/TransactionService";
+import { Transaction } from "../../types/Transaction";
 import { DatePicker } from "@mui/x-date-pickers";
-import dayjs, { Dayjs } from "dayjs";
+import { Dayjs } from "dayjs";
+import TransactionList from "./TransactionList";
 
-export default function TransactionList() {
+export default function TransactionPage() {
     const {accounts} = useContext(AccountContext);
 
     const [selectedAccount, setSelectedAccount] = useState<string>("");
     const [transactions, setTransactions] = useState<Transaction[]>([]);
     const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null);
-
-    const filteredTransactions = selectedDate
-        ? transactions.filter(t => dayjs(t.timestamp).isSame(selectedDate, "day"))
-        : transactions;
 
     useEffect(() => {
         if (selectedAccount) {
@@ -57,20 +53,7 @@ export default function TransactionList() {
                 </FormControl>
                 <DatePicker value={selectedDate} onChange={(newDate) => setSelectedDate(newDate)} />
             </Box>
-            <List sx={{ minWidth: 800, border: 1, borderRadius: 2, borderColor: "#dddddd" }}>
-                {
-                    filteredTransactions.length
-                        ? filteredTransactions.map((transaction, i) => (
-                            <>
-                                <TransactionView transaction={transaction} />
-                                {
-                                    i !== filteredTransactions.length - 1 && <Divider />
-                                }
-                            </>
-                        ))
-                        : <Typography color="grey" sx={{ pl: 2 }}>This account has no transactions.</Typography>
-                }
-            </List>
+            <TransactionList transactions={transactions} selectedDate={selectedDate} />
         </Box>
     )
 }

@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import AccountView from "./AccountView";
 import AddIcon from '@mui/icons-material/Add';
 import AccountDialog from "./AccountDialog";
-import { AccountContext } from "../App";
+import { AccountContext } from "../../App";
 
 export default function AccountList() {
     const {accounts} = useContext(AccountContext);

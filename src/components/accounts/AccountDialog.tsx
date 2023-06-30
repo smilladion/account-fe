@@ -1,7 +1,7 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from "@mui/material";
 import { Dispatch, SetStateAction, useContext, useState } from "react";
-import AccountService from "../services/AccountService";
-import { AccountContext } from "../App";
+import AccountService from "../../services/AccountService";
+import { AccountContext } from "../../App";
 
 interface AccountDialogProps {
     open: boolean,

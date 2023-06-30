@@ -1,5 +1,5 @@
 import { Accordion, AccordionDetails, AccordionSummary, Box, Typography } from "@mui/material";
-import { Account } from "../types/Account";
+import { Account } from "../../types/Account";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 interface AccountProps {
