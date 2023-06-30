@@ -1,7 +1,7 @@
 import { CssBaseline } from '@mui/material';
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import Root from './components/Root';
-import Home from './components/Home';
+import HomePage from './components/HomePage';
 import { Account } from './types/Account';
 import { Dispatch, SetStateAction, createContext, useEffect, useState } from 'react';
 import AccountService from './services/AccountService';
@@ -12,7 +12,7 @@ import AccountPage from './components/accounts/AccountPage';
 
 const router = createBrowserRouter(createRoutesFromElements(
     <Route path="/" element={<Root />}>
-        <Route index element={<Home />} />
+        <Route index element={<HomePage />} />
         <Route path="accounts" element={<AccountPage />} />
         <Route path="transactions" element={<TransactionPage />} />
     </Route>

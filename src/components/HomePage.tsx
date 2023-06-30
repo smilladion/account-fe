@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
-export default function Home() {
+export default function HomePage() {
     return (
         <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt={10}>
             <Typography color="#013655" fontWeight="bold" fontSize={30} mb={2}>
