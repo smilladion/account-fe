@@ -2,11 +2,11 @@ import { Accordion, AccordionDetails, AccordionSummary, Box, Typography } from "
 import { Account } from "../../types/Account";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-interface AccountProps {
+interface AccountItemProps {
     account: Account
 }
 
-export default function AccountView({account}: AccountProps) {
+export default function AccountItem({account}: AccountItemProps) {
     // Could add logic here that, based on the currency given by the account, changes the monetary symbol (e.g. kr/$/€/£...)
 
     return (

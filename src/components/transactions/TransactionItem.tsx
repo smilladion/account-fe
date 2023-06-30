@@ -2,11 +2,11 @@ import { ListItem, ListItemText, Typography } from "@mui/material"
 import { Transaction } from "../../types/Transaction"
 import dayjs from "dayjs";
 
-interface TransactionViewProps {
+interface TransactionItemProps {
     transaction: Transaction
 }
 
-export default function TransactionView({transaction}: TransactionViewProps) {
+export default function TransactionItem({transaction}: TransactionItemProps) {
     const date = dayjs(transaction.timestamp);
 
     return (

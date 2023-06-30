@@ -1,6 +1,6 @@
 import { Divider, List, Typography } from "@mui/material";
 import { Transaction } from "../../types/Transaction";
-import TransactionView from "./TransactionView";
+import TransactionItem from "./TransactionItem";
 import dayjs, { Dayjs } from "dayjs";
 
 interface TransactionListProps {
@@ -19,7 +19,7 @@ export default function TransactionList({transactions, selectedDate}: Transactio
                 filteredTransactions.length
                     ? filteredTransactions.map((transaction, i) => (
                         <>
-                            <TransactionView transaction={transaction} />
+                            <TransactionItem transaction={transaction} />
                             {
                                 i !== filteredTransactions.length - 1 && <Divider />
                             }

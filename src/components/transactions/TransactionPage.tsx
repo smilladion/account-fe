@@ -38,7 +38,7 @@ export default function TransactionPage() {
                 Transactions
             </Typography>
             <Box display="flex" alignItems="center" mb={5} sx={{ gap: 4 }}>
-                <FormControl sx={{ minWidth: 200 }} size="small">
+                <FormControl sx={{ minWidth: 230 }}>
                     <Select
                         value={selectedAccount}
                         displayEmpty
