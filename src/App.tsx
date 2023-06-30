@@ -3,7 +3,7 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import Root from './components/Root';
 import Home from './components/Home';
 import AccountList from './components/AccountList';
-import Transactions from './components/Transactions';
+import TransactionList from './components/TransactionList';
 import { Account } from './types/Account';
 import { Dispatch, SetStateAction, createContext, useEffect, useState } from 'react';
 import AccountService from './services/AccountService';
@@ -12,7 +12,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path="/" element={<Root />}>
         <Route index element={<Home />} />
         <Route path="accounts" element={<AccountList />} />
-        <Route path="transactions" element={<Transactions />} />
+        <Route path="transactions" element={<TransactionList />} />
     </Route>
 ))
 
