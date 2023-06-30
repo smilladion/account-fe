@@ -4,12 +4,19 @@ import { AccountContext } from "../App";
 import TransactionService from "../services/TransactionService";
 import { Transaction } from "../types/Transaction";
 import TransactionView from "./TransactionView";
+import { DatePicker } from "@mui/x-date-pickers";
+import dayjs, { Dayjs } from "dayjs";
 
 export default function TransactionList() {
     const {accounts} = useContext(AccountContext);
 
     const [selectedAccount, setSelectedAccount] = useState<string>("");
     const [transactions, setTransactions] = useState<Transaction[]>([]);
+    const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null);
+
+    const filteredTransactions = selectedDate
+        ? transactions.filter(t => dayjs(t.timestamp).isSame(selectedDate, "day"))
+        : transactions;
 
     useEffect(() => {
         if (selectedAccount) {
@@ -34,27 +41,30 @@ export default function TransactionList() {
             <Typography color="#013655" fontWeight="bold" fontSize={30} mb={5}>
                 Transactions
             </Typography>
-            <FormControl sx={{ mb: 5, minWidth: 200 }} size="small">
-                <Select
-                    value={selectedAccount}
-                    displayEmpty
-                    onChange={e => setSelectedAccount(e.target.value)}
-                >
-                    {
-                        accounts.map(account => {
-                            return <MenuItem key={account.id} value={account.name}>{account.name}</MenuItem>
-                        })
-                    }
-                </Select>
-            </FormControl>
+            <Box display="flex" alignItems="center" mb={5} sx={{ gap: 4 }}>
+                <FormControl sx={{ minWidth: 200 }} size="small">
+                    <Select
+                        value={selectedAccount}
+                        displayEmpty
+                        onChange={e => setSelectedAccount(e.target.value)}
+                    >
+                        {
+                            accounts.map(account => {
+                                return <MenuItem key={account.id} value={account.name}>{account.name}</MenuItem>
+                            })
+                        }
+                    </Select>
+                </FormControl>
+                <DatePicker value={selectedDate} onChange={(newDate) => setSelectedDate(newDate)} />
+            </Box>
             <List sx={{ minWidth: 800, border: 1, borderRadius: 2, borderColor: "#dddddd" }}>
                 {
-                    transactions.length
-                        ? transactions.map((transaction, i) => (
+                    filteredTransactions.length
+                        ? filteredTransactions.map((transaction, i) => (
                             <>
                                 <TransactionView transaction={transaction} />
                                 {
-                                    i !== transactions.length - 1 && <Divider />
+                                    i !== filteredTransactions.length - 1 && <Divider />
                                 }
                             </>
                         ))

@@ -7,6 +7,8 @@ import TransactionList from './components/TransactionList';
 import { Account } from './types/Account';
 import { Dispatch, SetStateAction, createContext, useEffect, useState } from 'react';
 import AccountService from './services/AccountService';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 const router = createBrowserRouter(createRoutesFromElements(
     <Route path="/" element={<Root />}>
@@ -31,8 +33,10 @@ function App() {
 
     return (
         <AccountContext.Provider value={{ accounts: accounts, setAccounts: setAccounts }}>
-            <CssBaseline />
-            <RouterProvider router={router} />
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <CssBaseline />
+                <RouterProvider router={router} />
+            </LocalizationProvider>
         </AccountContext.Provider>
     );
 }
